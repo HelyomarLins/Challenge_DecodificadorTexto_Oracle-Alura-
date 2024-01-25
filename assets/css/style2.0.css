@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+/* Definição de cores e fontes */
+:root {
+  --main-color: #F3F5Fc;
+  --secondary-color: #FFFFFF;
+  --tertiary-color: #0A3871;
+  --quaternary-color: #D8DFE8;
+  --title-color: #343A40;
+  --text-color: #495057;
+
+  --main-font: "Inter", sans-serif;
+}
+
+/* Reset de margens e paddings */
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+
+/* Configurações gerais do corpo da página*/
+body {
+  display: grid;
+  grid-template-areas:
+    "header main"
+    "footer footer";
+  grid-template-columns: 7.5rem auto;
+  grid-template-rows: auto max-content;
+  width: 100%;
+  height: 100vh;
+  gap: 2.5rem;
+  background-color: var(--main-color);
+  font-family: var(--main-font);
+}
+
+/* Configurações para todas as textareas*/
+textarea {
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Configurações para todos os botões*/
+input[type="button"] {
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    border: 1px solid var(--tertiary-color);
+    font-size: 1rem;
+    cursor: pointer;
+    color: var(--title-color);
+}
+
+/* Configurações do cabeçalho da página*/ 
+.page-header,
+.main-container {
+    padding: 2.5rem;
+}
+
+/* Configurações do cabeçalho da página*/ 
+.page-header {
+    grid-area: header;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 4rem;
+}
+
+/* Configurações da imagem do cabeçalho*/  
+.page-header img {
+    width: 2rem;
+}
+
+/* Configurações do container principal*/  
+.main-container {
+    grid-area: main;
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+    height: 100%;
+}
+
+/* Configurações da seção principal*/  
+.section-main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Configurações da textarea da seção principal*/  
+.section-main textarea {
+    margin-top: 8rem;
+    height: 100%;
+    font-size: 2rem;
+    color: var(--tertiary-color);
+    line-height: 150%;
+}
+
+/* Configurações dos botões da seção principal*/  
+.section-main-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+/* Configurações do primeiro botão da seção principal*/  
+.section-main-buttons input[type="button"]:first-child {
+  color: var(--main-color);
+  background-color: var(--tertiary-color);
+}
+
+/* Configurações da seção de resultados*/  
+.section-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 30%;
+  padding: 2rem;
+  border-radius: 2rem;
+  background: var(--secondary-color);
+  box-shadow: 0rem 1.5rem 2rem -0.5rem rgba(0, 0, 0, 0.5);
+}
+
+/* Configurações do alerta da seção principal*/  
+.section-main-alert {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Configurações do parágrafo do alerta da seção principal*/  
+.section-main-alert p {
+    font-size: 0.75rem;
+  line-height: 1rem;
+  color: var(--text-color);
+}
+
+/* Configurações da seção de resultados*/  
+.section-result-start,
+.section-result-card {
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+/* Configurações do card de resultados*/  
+.section-result-card {
+    width: 100%;
+    height: 100%;
+}
+
+/* Configurações da textarea do card de resultados*/  
+.section-result-card textarea {
+    font-size: 1.5rem;
+  color: var(--text-color);
+  line-height: 150%;
+}
+
+/* Configurações do rodapé da página */ 
+.page-footer {
+  grid-area: footer;
+  width: 100%;
+  height: max-content;
+  padding: 1rem;
+  color: var(--main-color);
+  background-color: var(--tertiary-color);
+  text-align: center;
+  font-family: var(--secondary-font);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+/* Configurações do link do rodapé */ 
+.page-footer a {
+    text-decoration: none;
+    color: var(--main-color);
+}
+
+/* Configurações de responsividade para telas menores */ 
+@media only screen and (max-width: 992px) {
+    body {
+    grid-template-areas: "header" "main" "footer";
+    grid-template-rows: max-content auto max-content;
+    grid-template-columns: auto;
+}
+
+  .page-header {
+    align-items: flex-start;
+    padding: 1rem 0.5rem 0 1rem;
+    margin-left: 0;
+  }
+
+  .main-container {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 2rem;
+  }
+  .section-main {
+    gap: 1rem;
+  }
+
+  .section-main textarea {
+    margin-top: 2.5rem;
+    min-height: 15rem;
+    height: 100%;
+  }
+
+  .section-main-buttons {
+    flex-direction: column;
+  }
+  
+  .section-result {
+      width: 100%;
+  }
+  .section-result-start img {
+      display: none;
+    }
+}
