@@ -1,4 +1,15 @@
-// Mapeamento de letras para palavras
+//Declarando os elementos do Dom
+const elements = {
+    inputTextArea: document.querySelector('.section_main_inpu'),
+    btnCripto: document.querySelector('.btn-criptografar'),
+    btnDescripto: document.querySelector('.btn-descriptografar'),
+    resultContainer: document.querySelector('.section-result-card'),
+    btnCopiar: document.querySelector('.btn-copy'),
+    resultTextArea: document.querySelector('.section_container_result_output'),
+    startResultContainer: document.querySelector('.section-result-start'),
+    encryptedText: '',
+}
+/*// Mapeamento de letras para palavras
 const swapWords = {
     a: 'ai',
     e: 'enter',
@@ -7,19 +18,8 @@ const swapWords = {
     u: 'ufat'
 };
 
-// Seleção de elementos do DOM
-const elements = {
-    inputTextArea: document.querySelector('.section-main-input'),
-    encodeButton: document.querySelector('.btn-criptografar'),
-    decodeButton: document.querySelector('.btn-descriptografar'),
-    resultContainer: document.querySelector('.section-result-card'),
-    copyButton: document.querySelector('.btn-copy'),
-    resultTextArea: document.querySelector('.section-result-output'),
-    startResultContainer: document.querySelector('.section-result-start'),
-    alertMessage: document.getElementById('errorMessage'),
-    encryptedText: '',
-}
-
+*/
+/*
 // Função para codificar o texto
 function codeText (value) {
     return Array.from(value.toLocaleLowerCase())
