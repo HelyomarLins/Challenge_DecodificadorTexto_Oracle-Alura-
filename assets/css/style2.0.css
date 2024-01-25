@@ -8,7 +8,8 @@
   --quaternary-color: #D8DFE8;
   --title-color: #343A40;
   --text-color: #495057;
-
+  --black: #000000;
+  --slimtertiaru-color: #0a387165;
   --main-font: "Inter", sans-serif;
 }
 
@@ -22,119 +23,144 @@
 
 /* Configurações gerais do corpo da página*/
 body {
-  display: grid;
-  grid-template-areas:
-    "header main"
-    "footer footer";
-  grid-template-columns: 7.5rem auto;
-  grid-template-rows: auto max-content;
   width: 100%;
   height: 100vh;
   gap: 2.5rem;
-  background-color: var(--main-color);
+  background-color: var(--black);
   font-family: var(--main-font);
 }
 
-/* Configurações para todas as textareas*/
-textarea {
-  background: transparent;
-  width: 100%;
-  height: 100%;
-  border: none;
+/* Configurações gerais do envoltório da página */
+.page_wrapper {
+  height: 80%;
+  background-image: url(/assets/image/hacker.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: auto;
+}
+/* Configurações gerais do header da página*/
+.header_page {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  justify-content: space-between;
+}
+/* Configurações gerais do logo da header*/
+.header_page img {
+  height: 4rem; 
 }
 
+/* Configurações gerais do nav e seus links*/
+.header_page nav ul {
+  margin-right: 5rem;
+}
+.header_page nav ul {
+  list-style-type: none;
+  display: flex;
+}
+.header_page nav ul li {
+  margin-left: 20px;
+}
+.header_page nav ul li a{
+  font-size: 1.5em;
+  font-weight: 400;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: 1s;
+}
+.header_page nav ul li a:hover{
+  color: var(--secondary-color);
+  border: 1px solid var(--tertiary-color);
+}
+/* Configurações para todas as textareas*/
+  textarea {
+    width: 100%;
+    height: 100%;
+    background-color: var(--slimtertiaru-color);
+    border-radius: 0.5rem;
+    border: 1px solid var(--main-color);
+    color: var(--main-color);
+  }
+  
 /* Configurações para todos os botões*/
 input[type="button"] {
-    width: 100%;
-    padding: 1.5rem;
-    border-radius: 1.5rem;
-    border: 1px solid var(--tertiary-color);
-    font-size: 1rem;
+    width: 80%;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--main-color);
+    font-size: 1.5rem;
     cursor: pointer;
-    color: var(--title-color);
 }
-
-/* Configurações do cabeçalho da página*/ 
-.page-header,
-.main-container {
-    padding: 2.5rem;
-}
-
-/* Configurações do cabeçalho da página*/ 
-.page-header {
-    grid-area: header;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-left: 4rem;
-}
-
-/* Configurações da imagem do cabeçalho*/  
-.page-header img {
-    width: 2rem;
-}
-
-/* Configurações do container principal*/  
-.main-container {
-    grid-area: main;
+/* Configurações do container principal*/
+.container {
     display: flex;
     flex-direction: row;
-    gap: 5rem;
+    justify-content: space-around;
+    gap: 2rem;
     height: 100%;
 }
 
-/* Configurações da seção principal*/  
-.section-main {
-    width: 100%;
+/* Configurações da seção principal*/
+.section_container {
+    width: 50%;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
 }
 
-/* Configurações da textarea da seção principal*/  
-.section-main textarea {
-    margin-top: 8rem;
+/* Configurações da textarea da seção principal*/ 
+.section_main_input{
+    margin-top: 2rem;
     height: 100%;
     font-size: 2rem;
-    color: var(--tertiary-color);
     line-height: 150%;
 }
 
-/* Configurações dos botões da seção principal*/  
-.section-main-buttons {
+/* Configurações dos botões da seção principal*/
+.section_container_buttons{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1.5rem;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
 }
-
-/* Configurações do primeiro botão da seção principal*/  
-.section-main-buttons input[type="button"]:first-child {
+/*Configuração aparencia dos botôes*/
+.section_container_buttons input[type="button"],
+.section_container_result input[type="button"]
+{
   color: var(--main-color);
+  background-color: var(--slimtertiaru-color);
+  transition: 0.5s;
+}
+/* Configurações do primeiro botão da seção principal*/ 
+.section_container_buttons input[type="button"]:hover {
   background-color: var(--tertiary-color);
 }
 
-/* Configurações da seção de resultados*/  
-.section-result {
+/* Configurações da seção de resultados*/ 
+.section_container_result {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
-  width: 30%;
-  padding: 2rem;
-  border-radius: 2rem;
-  background: var(--secondary-color);
-  box-shadow: 0rem 1.5rem 2rem -0.5rem rgba(0, 0, 0, 0.5);
+  width: 40%;
+  padding: 1rem;
+  border-radius: 1rem;
+  background: var(--slimtertiaru-color);
+  border: 1px solid var(--main-color);
+  
 }
 
-/* Configurações do alerta da seção principal*/  
+/* Configurações do alerta da seção principal*  
 .section-main-alert {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-/* Configurações do parágrafo do alerta da seção principal*/  
+/* Configurações do parágrafo do alerta da seção principal* 
 .section-main-alert p {
     font-size: 0.75rem;
   line-height: 1rem;
@@ -142,49 +168,50 @@ input[type="button"] {
 }
 
 /* Configurações da seção de resultados*/  
-.section-result-start,
-.section-result-card {
-    display: flex;
+.section_container_result_start,
+.section_container_result_card {
+  display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   gap: 1rem;
+  color: var(--main-color);
 }
 
-/* Configurações do card de resultados*/  
+/* Configurações do card de resultados*  
 .section-result-card {
     width: 100%;
     height: 100%;
 }
 
-/* Configurações da textarea do card de resultados*/  
+/* Configurações da textarea do card de resultados* 
 .section-result-card textarea {
     font-size: 1.5rem;
   color: var(--text-color);
   line-height: 150%;
 }
 
-/* Configurações do rodapé da página */ 
-.page-footer {
-  grid-area: footer;
+/* Configurações do rodapé da página */
+.footer_page {
+  position: fixed;
+  bottom: 0;
   width: 100%;
   height: max-content;
   padding: 1rem;
   color: var(--main-color);
-  background-color: var(--tertiary-color);
   text-align: center;
   font-family: var(--secondary-font);
   font-size: 1rem;
   font-weight: 400;
 }
 
-/* Configurações do link do rodapé */ 
-.page-footer a {
+/* Configurações do link do rodapé */
+.footer_page a {
     text-decoration: none;
     color: var(--main-color);
 }
 
-/* Configurações de responsividade para telas menores */ 
+/* Configurações de responsividade para telas menores * 
 @media only screen and (max-width: 992px) {
     body {
     grid-template-areas: "header" "main" "footer";
