@@ -4,13 +4,14 @@
 :root {
   --main-color: #F3F5Fc;
   --secondary-color: #FFFFFF;
-  --tertiary-color: #0A3871;
+  --tertiary-color: #4c068d;
   --quaternary-color: #D8DFE8;
   --title-color: #343A40;
   --text-color: #495057;
   --black: #000000;
-  --slimtertiaru-color: #0a387165;
+  --slimblack:#292929af ;
   --main-font: "Inter", sans-serif;
+ 
 }
 
 /* Reset de margens e paddings */
@@ -78,7 +79,7 @@ body {
   textarea {
     width: 100%;
     height: 100%;
-    background-color: var(--slimtertiaru-color);
+    background-color: var(--slimblack);
     border-radius: 0.5rem;
     border: 1px solid var(--main-color);
     color: var(--main-color);
@@ -91,6 +92,8 @@ input[type="button"] {
     border-radius: 0.5rem;
     border: 1px solid var(--main-color);
     font-size: 1.5rem;
+    color: var(--tertiary-color);
+    background-color: var(--slimblack);
     cursor: pointer;
 }
 /* Configurações do container principal*/
@@ -116,11 +119,11 @@ textarea do card de resultados*/
 .section_container_result_output{
     margin-top: 2rem;
     height: 100%;
-    font-size: 1rem;
+    font-size: 1.5rem;
     line-height: 150%;
 }
 
-/* Configurações dos botões da seção principal*/
+/* Alinhamento dos botões da seção principal*/
 .section_container_buttons{
     display: flex;
     align-items: center;
@@ -132,14 +135,14 @@ textarea do card de resultados*/
 .section_container_buttons input[type="button"],
 .section_container_result input[type="button"]
 {
-  color: var(--main-color);
-  background-color: var(--slimtertiaru-color);
-  transition: 0.5s;
+    transition: 1s;
 }
 /* Animação dos botões*/ 
 .section_container_buttons input[type="button"]:hover,
 .section_container_result input[type="button"]:hover {
-  background-color: var(--tertiary-color);
+  background-color: var(--black);
+  color: var(--secondary-color);
+  border: 1px solid var(--tertiary-color);
 }
 
 /* Configurações da seção de resultados*/ 
@@ -151,7 +154,7 @@ textarea do card de resultados*/
   width: 40%;
   padding: 1rem;
   border-radius: 1rem;
-  background: var(--slimtertiaru-color);
+  background: var(--slimblack);
   border: 1px solid var(--main-color);
   
 }

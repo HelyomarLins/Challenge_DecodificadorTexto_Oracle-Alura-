@@ -1,24 +1,55 @@
 //Declarando os elementos do Dom
-const elements = {
-    inputTextArea: document.querySelector('.section_main_inpu'),
-    btnCripto: document.querySelector('.btn-criptografar'),
-    btnDescripto: document.querySelector('.btn-descriptografar'),
-    resultContainer: document.querySelector('.section-result-card'),
-    btnCopiar: document.querySelector('.btn-copy'),
-    resultTextArea: document.querySelector('.section_container_result_output'),
-    startResultContainer: document.querySelector('.section-result-start'),
-    encryptedText: '',
-}
-/*// Mapeamento de letras para palavras
-const swapWords = {
-    a: 'ai',
-    e: 'enter',
-    i: 'imes',
-    o: 'ober',
-    u: 'ufat'
-};
 
-*/
+const elements = {
+    inputTextArea: document.querySelector('.section_main_input');
+    btnCriptografar: document.querySelector('.btn-criptografar');
+    btnDescriptografar: document.querySelector('.btn-descriptografar');
+    copyButton: document.querySelector('.btn-copy');
+    resultContainer: document.querySelector('.section_container_result_card');
+    startResultContainer: document.querySelector('.section_container_result_start');
+    resultTextArea: document.querySelector('.section_container_result_output');
+    h2 = document.querySelector('.section_container_result_start h2');
+    p = document.querySelector('.section_container_result_start p');
+}
+// Função para alternar a exibição das divs
+function alternarDivs() {
+    if(resultContainer.style.display === 'none') {
+        resultContainerection_container_result_card.style.display = 'block';
+        section_container_result_start.style.display = 'none';
+    }
+}
+//Verifica inout vazio
+function verificarTextoVazio(evento) {
+    let botao = evento.target;
+    if(inputTextArea.value != '') {
+        h2.textContent = 'Nenhuma mensagem encontrada';
+        p.textContent = `Por favor, digite algo para ${botao.value.toLowerCase()}.`;
+    }
+}
+//Codificaa mensagem
+function codificarMensagem() {
+    let mensagem = inputTextArea.value;
+    let mensagemCodificada = btoa(mensagem);
+    return mensagemCodificada;
+}
+
+// Você pode chamar a função codificarMensagem() quando necessário
+let mensagemCodificada = codificarMensagem();
+console.log(mensagemCodificada); // Imprime a mensagem codificada no console
+
+// Adiciona eventos de clique aos botões
+btnCriptografar.addEventListener('click', function(){
+     verificarTextoVazio();
+     codificarMensagem();
+     alternarDivs()
+    });
+btnDescriptografar.addEventListener('click', verificarTextoVazio);
+
+
+
+
+
+
 /*
 // Função para codificar o texto
 function codeText (value) {
@@ -93,3 +124,4 @@ elements.decodeButton.onclick = () => {
     elements.inputTextArea.value = '';
     showResultCard(elements.encryptedText);
 };
+*/
