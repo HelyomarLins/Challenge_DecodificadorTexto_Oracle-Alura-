@@ -221,7 +221,6 @@ box-shadow: 0px 4px 8px 0px var(--quaternary-color);
      height: auto;
      gap: 1.5rem;
   }
-
   .header_page {
     display: flex;
     flex-direction: column;
