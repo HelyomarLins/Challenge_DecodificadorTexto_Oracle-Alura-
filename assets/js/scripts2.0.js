@@ -16,25 +16,51 @@ const elements = {
     h2: document.getElementById('result_title'),
     p: document.getElementById('result_mens'),
 }
+console.log(elements);
 
-//função para imprimir mensagem
-function updateMessage(h2, p, botaoClicado) {
-    let h2Text = "Nenhuma mensagem encontrada";
-    let pText = `Digite a mensagem que deseja ${botaoClicado}`;
-    h2.textContent = h2Text;
-    p.textContent = pText;
+// Função para verificar se a área de texto está vazia
+function updateMessage(evento) {
+    // Pega o botão que disparou o evento
+    let botao = evento.target;
+
+    // Verifica se o valor de textInput é uma string vazia
+    if(textInput.value === '') { 
+        // Se for, atualiza o texto de h2
+        h2.textContent = 'Nenhuma mensagem encontrada';
+        // E atualiza o texto de p
+        p.textContent = `Por favor, digite algo para ${botao.value.toLowerCase()}.`; 
+    }
 }
-elements.btnCriptografar.addEventListener('click', function() {
-    if(elements.textInput.value == '') {
-        updateMessage(elements.h2, elements.p, 'criptografar');
-    }
+
+// Adiciona eventos de clique aos botões
+btnCriptografar.addEventListener('click', updateMessage); 
+btnDescriptografar.addEventListener('click', updateMessage); 
+
+
+
+//Imprimindo mensagem
+/* Adicionando ouvintes de eventos aos botões
+elements.encodeButton.addEventListener('click', function() {
+    showResultCard('valor para criptografar');
+    updateMessage('Nenhuma mensagem encontrada', 'Digite a mensagem que deseja criptografar');
+});
+elements.decodeButton.addEventListener('click', function() {
+    showResultCard('valor para descriptografar');
+    updateMessage('Nenhuma mensagem encontrada', 'Digite a mensagem que deseja descriptografar');
+});
+elements.copyButton.addEventListener('click', function() {
+    showResultCard('valor para copiar');
+    updateMessage('Nenhuma mensagem encontrada', 'Digite a mensagem que deseja copiar');
 });
 
-elements.btnDescriptografar.addEventListener('click', function() {
-    if(elements.textInput.value == '') {
-        updateMessage(elements.h2, elements.p, 'descriptografar');
-    }
-});
+// Função para atualizar a mensagem
+function updateMessage(h2Text, pText) {
+    const h2Element = document.querySelector('.section_container_result_start h2');
+    const pElement = document.querySelector('.section_container_result_start p');
+
+    h2Element.textContent = h2Text;
+    pElement.textContent = pText;
+}
 
 
 
