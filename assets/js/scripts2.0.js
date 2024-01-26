@@ -1,55 +1,56 @@
 //Declarando os elementos do Dom
 
 const elements = {
-    inputTextArea: document.querySelector('.section_main_input');
-    btnCriptografar: document.querySelector('.btn-criptografar');
-    btnDescriptografar: document.querySelector('.btn-descriptografar');
-    copyButton: document.querySelector('.btn-copy');
-    resultContainer: document.querySelector('.section_container_result_card');
-    startResultContainer: document.querySelector('.section_container_result_start');
-    resultTextArea: document.querySelector('.section_container_result_output');
-    h2 = document.querySelector('.section_container_result_start h2');
-    p = document.querySelector('.section_container_result_start p');
+    //Controles do container de input texto
+    textInput: document.getElementById('text_input'),
+    btnCriptografar: document.getElementById('btn_cripto'),
+    btnDescriptografar: document.getElementById('btn_cripto'),
+
+    //controles do container de resposta
+    containerResult: document.getElementById('container_result'),
+    textResult: document.getElementById('text_result'),
+    btnCopy: document.getElementById('btn_copy'),
+
+    //controles do container de mensagem
+    containerMens: document.getElementById('container_mens'),
+    h2: document.getElementById('result_title'),
+    p: document.getElementById('result_mens'),
 }
-// Função para alternar a exibição das divs
-function alternarDivs() {
-    if(resultContainer.style.display === 'none') {
-        resultContainerection_container_result_card.style.display = 'block';
-        section_container_result_start.style.display = 'none';
+
+//função para imprimir mensagem
+function updateMessage(h2, p, botaoClicado) {
+    let h2Text = "Nenhuma mensagem encontrada";
+    let pText = `Digite a mensagem que deseja ${botaoClicado}`;
+    h2.textContent = h2Text;
+    p.textContent = pText;
+}
+elements.btnCriptografar.addEventListener('click', function() {
+    if(elements.textInput.value == '') {
+        updateMessage(elements.h2, elements.p, 'criptografar');
     }
-}
-//Verifica inout vazio
-function verificarTextoVazio(evento) {
-    let botao = evento.target;
-    if(inputTextArea.value != '') {
-        h2.textContent = 'Nenhuma mensagem encontrada';
-        p.textContent = `Por favor, digite algo para ${botao.value.toLowerCase()}.`;
+});
+
+elements.btnDescriptografar.addEventListener('click', function() {
+    if(elements.textInput.value == '') {
+        updateMessage(elements.h2, elements.p, 'descriptografar');
     }
-}
-//Codificaa mensagem
-function codificarMensagem() {
-    let mensagem = inputTextArea.value;
-    let mensagemCodificada = btoa(mensagem);
-    return mensagemCodificada;
-}
-
-// Você pode chamar a função codificarMensagem() quando necessário
-let mensagemCodificada = codificarMensagem();
-console.log(mensagemCodificada); // Imprime a mensagem codificada no console
-
-// Adiciona eventos de clique aos botões
-btnCriptografar.addEventListener('click', function(){
-     verificarTextoVazio();
-     codificarMensagem();
-     alternarDivs()
-    });
-btnDescriptografar.addEventListener('click', verificarTextoVazio);
+});
 
 
 
 
 
+/*
+// Mapeamento de letras para palavras
+const swapWords = {
+    a: 'ai',
+    e: 'enter',
+    i: 'imes',
+    o: 'ober',
+    u: 'ufat'
+};
 
+*/
 /*
 // Função para codificar o texto
 function codeText (value) {
