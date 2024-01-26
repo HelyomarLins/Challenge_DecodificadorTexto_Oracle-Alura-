@@ -55,8 +55,18 @@ input[type="button"] {
 }
 
 /* Configurações do cabeçalho da página*/ 
-.page-header,
-.main-container {
+.page-header a{
+  text-decoration: none;
+  margin-top: 1rem;
+  width: 5rem;
+  padding-inline-start: 2rem;
+  background-color: aqua;
+  border-radius: 40%;
+  
+
+}
+.main-container,
+.pageheader {
     padding: 2.5rem;
 }
 
