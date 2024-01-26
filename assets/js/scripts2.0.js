@@ -1,154 +1,130 @@
 //Declarando os elementos do Dom
-
 const elements = {
     //Controles do container de input texto
     textInput: document.getElementById('text_input'),
     btnCriptografar: document.getElementById('btn_cripto'),
-    btnDescriptografar: document.getElementById('btn_cripto'),
-
+    btnDescriptografar: document.getElementById('btn_descripto'),
+    
     //controles do container de resposta
     containerResult: document.getElementById('container_result'),
     textResult: document.getElementById('text_result'),
     btnCopy: document.getElementById('btn_copy'),
-
+    
     //controles do container de mensagem
     containerMens: document.getElementById('container_mens'),
     h2: document.getElementById('result_title'),
     p: document.getElementById('result_mens'),
+    
+    //controles da encriptação e descriptação da senha
+    hashTable: {},
 }
-console.log(elements);
-
-// Função para verificar se a área de texto está vazia
+/*
+//Bloqueando botões
+window.onload = function() {
+    elements.btnCriptografar.disabled = true;
+    elements.btnDescriptografar.disabled = true;
+    elements.btnCopy.disabled = true;
+}
+*/
+// Função mensagem 
 function updateMessage(evento) {
     // Pega o botão que disparou o evento
     let botao = evento.target;
-
     // Verifica se o valor de textInput é uma string vazia
-    if(textInput.value === '') { 
+    if(elements.textInput.value == '') {
         // Se for, atualiza o texto de h2
-        h2.textContent = 'Nenhuma mensagem encontrada';
+        elements.h2.textContent = 'Nenhuma mensagem encontrada';
         // E atualiza o texto de p
-        p.textContent = `Por favor, digite algo para ${botao.value.toLowerCase()}.`; 
+        elements.p.textContent = `Por favor, digite algo para ${botao.value.toLowerCase()}.`; 
+        //Desbloqueia os elementos da mensagem
+        elements.h2.style.display = 'flex';
+        elements.p.style.display = 'flex';
+        //Resseta as div´s textárea
+        elements.containerResult.style.display = 'none';
+        elements.containerMens.style.display = 'block';
+        elements.textInput.value= ''; // Limpa o textIput
+    }
+}
+
+// Função para criptografar a mensagem
+function criptoMessage(evento) {
+    if(elements.textInput.value != '') {
+        //desabilitar o botão Descriptografar
+        elements.btnDescriptografar.disabled = true;
+        // Pega o valor do textInput
+        let message = elements.textInput.value;
+
+        // Cria um hash SHA256 da mensagem
+        let hash = CryptoJS.SHA256(message);
+
+        // Converte o hash para uma string hexadecimal
+        let hashHex = hash.toString(CryptoJS.enc.Hex);
+
+        //Armazena a mensagem original no hashTable usando HASH como chave
+        elements.hashTable[hashHex] = message;
+
+        // Copia o hash para o textResult e limpa o textInput
+        elements.textResult.textContent = hashHex;
+        elements.textInput.value= ''; // Limpa o textIput
+
+        // Imprime o hash no console
+        console.log(hashHex);
+
+        // Alterna a visibilidade das divs
+        elements.containerResult.style.display = 'block';
+        elements.containerMens.style.display = 'none';
+    }
+}
+// Função para copiar a mensagem criptografada para a textInput
+function copyMessage() {
+    //Copia a mensagem para o textInput
+    elements.textInput.value = elements.textResult.textContent;
+
+    // Limpa o textResult
+    elements.textResult.textContent = "";
+
+    //Desabilita botões
+    elements.btnCriptografar.disabled = true;
+    elements.btnCopy.disabled = true;
+
+    //Habilita botão
+    elements.btnDescriptografar.disabled = false;
+}
+//Função para Descriptografar a mensagem
+function decriptoMessage() {
+    elements.btnCriptografar.disabled = false;
+    elements.btnCopy.disabled = true;
+
+    let hashHex = elements.textInput.value;
+
+    // Busca a mensagem original usando o hash
+    let message = elements.hashTable[hashHex];
+
+    if (message) {
+        elements.textResult.textContent = message;
+        elements.textInput.value = "";
+    } else {
+        elements.textResult.textContent = "Hash não encontrado";
+    }
+}
+
+function handleClick(evento) {
+    // Pega o botão que disparou o evento
+    let botao = evento.target;
+
+    if(elements.textInput.value == '') {
+        updateMessage(evento);
+    } else {
+        if (botao.id === 'btn_cripto') {
+            criptoMessage(evento);
+        } else if (botao.id === 'btn_descripto') {
+            decriptoMessage(evento);
+        }
     }
 }
 
 // Adiciona eventos de clique aos botões
-btnCriptografar.addEventListener('click', updateMessage); 
-btnDescriptografar.addEventListener('click', updateMessage); 
+elements.btnCriptografar.addEventListener('click', handleClick);
+elements.btnDescriptografar.addEventListener('click', handleClick);
+elements.btnCopy.addEventListener('click', copyMessage);
 
-
-
-//Imprimindo mensagem
-/* Adicionando ouvintes de eventos aos botões
-elements.encodeButton.addEventListener('click', function() {
-    showResultCard('valor para criptografar');
-    updateMessage('Nenhuma mensagem encontrada', 'Digite a mensagem que deseja criptografar');
-});
-elements.decodeButton.addEventListener('click', function() {
-    showResultCard('valor para descriptografar');
-    updateMessage('Nenhuma mensagem encontrada', 'Digite a mensagem que deseja descriptografar');
-});
-elements.copyButton.addEventListener('click', function() {
-    showResultCard('valor para copiar');
-    updateMessage('Nenhuma mensagem encontrada', 'Digite a mensagem que deseja copiar');
-});
-
-// Função para atualizar a mensagem
-function updateMessage(h2Text, pText) {
-    const h2Element = document.querySelector('.section_container_result_start h2');
-    const pElement = document.querySelector('.section_container_result_start p');
-
-    h2Element.textContent = h2Text;
-    pElement.textContent = pText;
-}
-
-
-
-
-
-/*
-// Mapeamento de letras para palavras
-const swapWords = {
-    a: 'ai',
-    e: 'enter',
-    i: 'imes',
-    o: 'ober',
-    u: 'ufat'
-};
-
-*/
-/*
-// Função para codificar o texto
-function codeText (value) {
-    return Array.from(value.toLocaleLowerCase())
-    .map( (i) => swapWords[i] ?? i)
-    .join('');
-}
-
-// Função para decodificar o texto
-function decodeText(text) {
-    const reverseWords = Object.fromEntries(
-      Object.entries(swapWords).map(([k, v]) => [v, k])
-    );
-    Object.keys(reverseWords).forEach((k) => {
-      text = text.split(k).join(reverseWords[k]);
-    });
-    return text;
-}
-
-// Função para validar o texto
-function validateText () {
-    return elements.encryptedText.match(/^[a-z\s]+$/i);
-}
-
-// Função para exibir uma mensagem de entrada inválida
-function invalidEntry () {
-    elements.alertMessage.style.color = 'red';
-    setTimeout( () => {
-        elements.alertMessage.style.color = '#495057';
-    }, 500);
-}
-
-// Função para exibir o resultado vazio
-function showResultEmpty() {
-    elements.resultContainer.style.display = 'none';
-    elements.startResultContainer.style.display = 'flex';
-}
-
-// Função para exibir o cartão de resultado
-function showResultCard (value) {
-    elements.resultTextArea.value = value;
-    elements.startResultContainer.style.display = 'none';
-    elements.resultContainer.style.display = 'flex';
-}
-
-// Evento de clique para copiar o texto
-elements.copyButton.onclick = () => {
-    navigator.clipboard.writeText(elements.encryptedText);
-};
-
-// Evento de clique para codificar o texto
-elements.encodeButton.onclick = () => {
-    elements.encryptedText = elements.inputTextArea.value;
-    if (!validateText()) {
-        showResultEmpty()
-        return invalidEntry();
-    }
-    elements.encryptedText = codeText(elements.encryptedText);
-    elements.inputTextArea.value = '';
-    showResultCard(elements.encryptedText);
-};
-
-// Evento de clique para decodificar o texto
-elements.decodeButton.onclick = () => {
-    elements.encryptedText = elements.inputTextArea.value;
-
-    if (!validateText()) {
-        showResultEmpty()
-        return invalidEntry();
-    }
-    elements.encryptedText = decodeText(elements.encryptedText);
-    elements.inputTextArea.value = '';
-    showResultCard(elements.encryptedText);
-};
-*/

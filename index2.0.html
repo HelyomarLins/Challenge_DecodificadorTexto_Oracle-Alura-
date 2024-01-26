@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Decodificador de texto</title>
     <link rel="stylesheet" href="./assets/css/style2.0.css">
+    <!-- Biblioteca de Encriptação-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+
 </head>
 <body>
     <header class="header_page">
@@ -23,23 +26,23 @@
                 <textarea id="text_input" class="section_main_input" placeholder="Digite seu texto"></textarea>
                 <div class="section_container_buttons">
                     <input id="btn_cripto" class="btn-criptografar" type="button" value="Criptografar">
-                    <input id="btn_cripto" class="btn-descriptografar" type="button" value="Descriptografar">
+                    <input id="btn_descripto" class="btn-descriptografar" type="button" value="Descriptografar">
                 </div>
             </section>
             <section class="section_container_result">
-                <div id="container_result" class="section_container_result_card" style="display: none;">
+                <div id="container_result" class="section_container_result_card" style="display: none;" >
                   <textarea id="text_result" class="section_container_result_output"></textarea>
                     <input id="btn_copy" class="btn-copy" type="button" value="Copiar">
                 </div>
                 <div id="container_mens" class="section_container_result_start" >
                    <img src="./assets/image/hacker.jpg" alt="Hacker com notebook">
-                   <h2 id="result_title"></h2>
-                   <p id="result_mens"></p>
+                   <h2 id="result_title" style="display:none;"></h2>
+                   <p id="result_mens" style="display: none"></p>
                 </div>
             </section>
         </main>
         <footer class="footer_page">
-            <p>Desenvolvido por <a href="https://github.com/HelyomarLins" target="_blank">Helyomar Lins</a></p>
+            <p>Desenvolvido por <a href="https://github.com/HelyomarLins" target="_blank">&reg;Helyomar Lins</a></p>
         </footer>
     </div>
 </body>
