@@ -18,15 +18,8 @@ const elements = {
     //controles da encriptação e descriptação da senha
     hashTable: {},
 }
-/*
-//Bloqueando botões
-window.onload = function() {
-    elements.btnCriptografar.disabled = true;
-    elements.btnDescriptografar.disabled = true;
-    elements.btnCopy.disabled = true;
-}
-*/
-// Função mensagem 
+
+// Função imprime mensagem 
 function updateMessage(evento) {
     // Pega o botão que disparou o evento
     let botao = evento.target;
@@ -35,22 +28,21 @@ function updateMessage(evento) {
         // Se for, atualiza o texto de h2
         elements.h2.textContent = 'Nenhuma mensagem encontrada';
         // E atualiza o texto de p
-        elements.p.textContent = `Por favor, digite algo para ${botao.value.toLowerCase()}.`; 
+        elements.p.textContent = `Por favor, digite algo para ${botao.value.toUpperCase()}.`; 
         //Desbloqueia os elementos da mensagem
         elements.h2.style.display = 'flex';
         elements.p.style.display = 'flex';
-        //Resseta as div´s textárea
-        elements.containerResult.style.display = 'none';
-        elements.containerMens.style.display = 'block';
-        elements.textInput.value= ''; // Limpa o textIput
+       
     }
 }
 
 // Função para criptografar a mensagem
 function criptoMessage(evento) {
     if(elements.textInput.value != '') {
+
         //desabilitar o botão Descriptografar
-        elements.btnDescriptografar.disabled = true;
+        elements.btnDescriptografar.disabled = false;
+
         // Pega o valor do textInput
         let message = elements.textInput.value;
 
@@ -66,10 +58,7 @@ function criptoMessage(evento) {
         // Copia o hash para o textResult e limpa o textInput
         elements.textResult.textContent = hashHex;
         elements.textInput.value= ''; // Limpa o textIput
-
-        // Imprime o hash no console
-        console.log(hashHex);
-
+      
         // Alterna a visibilidade das divs
         elements.containerResult.style.display = 'block';
         elements.containerMens.style.display = 'none';
@@ -106,14 +95,16 @@ function decriptoMessage() {
     } else {
         elements.textResult.textContent = "Hash não encontrado";
     }
+    reset();
 }
-
+//Função para coordenar os botões 
 function handleClick(evento) {
     // Pega o botão que disparou o evento
     let botao = evento.target;
 
     if(elements.textInput.value == '') {
         updateMessage(evento);
+        
     } else {
         if (botao.id === 'btn_cripto') {
             criptoMessage(evento);
@@ -127,4 +118,22 @@ function handleClick(evento) {
 elements.btnCriptografar.addEventListener('click', handleClick);
 elements.btnDescriptografar.addEventListener('click', handleClick);
 elements.btnCopy.addEventListener('click', copyMessage);
+function reset() {
+    // Limpa os campos de entrada
+    elements.textInput.value = '';
+    //elements.textResult.textContent = '';
+
+    // Redefine a tabela hash
+    elements.hashTable = {};
+
+    // Habilita/desabilita os botões conforme necessário
+    elements.btnCriptografar.disabled = false;
+    elements.btnDescriptografar.disabled = true;
+    elements.btnCopy.disabled = true;
+
+}
+
+// Alterna a visibilidade das divs
+elements.containerResult.style.display = 'none';
+elements.containerMens.style.display = 'block';
 
