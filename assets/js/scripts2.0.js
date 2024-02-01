@@ -39,10 +39,7 @@ function updateMessage(evento) {
 // Função para criptografar a mensagem
 function criptoMessage(evento) {
     if(elements.textInput.value != '') {
-
-        //desabilitar o botão Descriptografar
-        elements.btnDescriptografar.disabled = false;
-
+        
         // Pega o valor do textInput
         let message = elements.textInput.value;
 
@@ -71,19 +68,10 @@ function copyMessage() {
 
     // Limpa o textResult
     elements.textResult.textContent = "";
-
-    //Desabilita botões
-    elements.btnCriptografar.disabled = true;
-    elements.btnCopy.disabled = true;
-
-    //Habilita botão
-    elements.btnDescriptografar.disabled = false;
 }
 //Função para Descriptografar a mensagem
 function decriptoMessage() {
-    elements.btnCriptografar.disabled = false;
-    elements.btnCopy.disabled = true;
-
+    
     let hashHex = elements.textInput.value;
 
     // Busca a mensagem original usando o hash
@@ -91,7 +79,7 @@ function decriptoMessage() {
 
     if (message) {
         elements.textResult.textContent = message;
-        elements.textInput.value = "";
+        elements.textInput.value = '';
     } else {
         elements.textResult.textContent = "Hash não encontrado";
     }
@@ -105,8 +93,8 @@ function resetFluxo() {
     // Reinicia o fluxo
     updateMessage(new Event('click', {target: elements.btnCriptografar}));
 }
-//Função para coordenar os botões 
 
+// Função para coordenar os botões 
 function handleClick(evento) {
     // Pega o botão que disparou o evento
     let botao = evento.target;
@@ -129,12 +117,10 @@ function handleClick(evento) {
     }
 }
 
-
-
-
 // Adiciona eventos de clique aos botões
 elements.btnCriptografar.addEventListener('click', handleClick);
 elements.btnDescriptografar.addEventListener('click', handleClick);
+elements.btnCopy.addEventListener('click', copyMessage);
 
 
 
@@ -148,7 +134,7 @@ function reset() {
 
     // Habilita/desabilita os botões conforme necessário
     elements.btnCriptografar.disabled = false;
-    elements.btnDescriptografar.disabled = true;
+    elements.btnDescriptografar.disabled = false;
     elements.btnCopy.disabled = true;
 
 }
