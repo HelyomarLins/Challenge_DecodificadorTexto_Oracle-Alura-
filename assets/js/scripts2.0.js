@@ -19,7 +19,7 @@ const elements = {
     hashTable: {},
 }
 
-// Função imprime mensagem 
+// Função imprime mensagem de Alerta
 function updateMessage(evento) {
     // Pega o botão que disparou o evento
     let botao = evento.target;
@@ -95,17 +95,32 @@ function decriptoMessage() {
     } else {
         elements.textResult.textContent = "Hash não encontrado";
     }
-    reset();
+   
+}
+
+//Função para ressetar o fluxo
+function resetFluxo() {
+    // Limpa o campo de entrada
+    elements.textInput.value = '';
+    // Reinicia o fluxo
+    updateMessage(new Event('click', {target: elements.btnCriptografar}));
 }
 //Função para coordenar os botões 
+
 function handleClick(evento) {
     // Pega o botão que disparou o evento
     let botao = evento.target;
 
+    // Verifica se textInput é uma string vazia 
     if(elements.textInput.value == '') {
-        updateMessage(evento);
-        
+        // Se for, verifica qual botão foi clicado
+        if(botao.id === 'btn_cripto' || botao.id === 'btn_descripto') {
+            // Se for 'btn_cripto' ou 'btn_descripto', chama a função updateMessage
+            updateMessage(evento);
+        }
     } else {
+        // Se não for, verifica qual botão foi clicado 
+        // chama a função correspondente
         if (botao.id === 'btn_cripto') {
             criptoMessage(evento);
         } else if (botao.id === 'btn_descripto') {
@@ -114,10 +129,15 @@ function handleClick(evento) {
     }
 }
 
+
+
+
 // Adiciona eventos de clique aos botões
 elements.btnCriptografar.addEventListener('click', handleClick);
 elements.btnDescriptografar.addEventListener('click', handleClick);
-elements.btnCopy.addEventListener('click', copyMessage);
+
+
+
 function reset() {
     // Limpa os campos de entrada
     elements.textInput.value = '';
