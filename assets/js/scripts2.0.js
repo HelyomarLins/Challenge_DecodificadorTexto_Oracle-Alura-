@@ -69,6 +69,7 @@ function copyMessage() {
     // Limpa o textResult
     elements.textResult.textContent = "";
 }
+
 //Função para Descriptografar a mensagem
 function decriptoMessage() {
     
@@ -85,15 +86,6 @@ function decriptoMessage() {
     }
    
 }
-
-//Função para ressetar o fluxo
-function resetFluxo() {
-    // Limpa o campo de entrada
-    elements.textInput.value = '';
-    // Reinicia o fluxo
-    updateMessage(new Event('click', {target: elements.btnCriptografar}));
-}
-
 // Função para coordenar os botões 
 function handleClick(evento) {
     // Pega o botão que disparou o evento
@@ -103,7 +95,8 @@ function handleClick(evento) {
     if(elements.textInput.value == '') {
         // Se for, verifica qual botão foi clicado
         if(botao.id === 'btn_cripto' || botao.id === 'btn_descripto') {
-            // Se for 'btn_cripto' ou 'btn_descripto', chama a função updateMessage
+            // Se for 'btn_cripto' ou 'btn_descripto', chama a função updateMessage e resset
+            reset();
             updateMessage(evento);
         }
     } else {
@@ -116,6 +109,7 @@ function handleClick(evento) {
         }
     }
 }
+
 
 // Adiciona eventos de clique aos botões
 elements.btnCriptografar.addEventListener('click', handleClick);
@@ -135,11 +129,11 @@ function reset() {
     // Habilita/desabilita os botões conforme necessário
     elements.btnCriptografar.disabled = false;
     elements.btnDescriptografar.disabled = false;
-    elements.btnCopy.disabled = true;
-
+    // Alterna a visibilidade das divs
+    elements.containerResult.style.display = 'none';
+    elements.containerMens.style.display = 'block';
+    
 }
 
-// Alterna a visibilidade das divs
-elements.containerResult.style.display = 'none';
-elements.containerMens.style.display = 'block';
+
 
