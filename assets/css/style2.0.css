@@ -29,15 +29,11 @@ body {
   gap: 2.5rem;
   background-color: var(--black);
   font-family: var(--main-font);
-}
-
-/* Configurações gerais do envoltório da página */
-.page_wrapper {
-  height: 80vh;
   background-image: url(/assets/image/fundo2.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
   overflow: auto;
 }
 /* Configurações gerais do header da página*/
@@ -215,60 +211,12 @@ box-shadow: 0px 4px 8px 0px var(--quaternary-color);
 
 /* Configurações de responsividade para telas menores */ 
 @media only screen and (max-width: 992px) {
-
-  body {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    gap: 20px; /* Isso adiciona um pequeno espaço entre os elementos */
-    align-items: center; /* Isso centraliza os elementos verticalmente */
-    justify-content: center; /* Isso centraliza os elementos horizontalmente */
-    height: 100vh; /* Isso faz com que o body ocupe toda a altura da tela */
-    margin: 0;
-    padding: 20px; /* Isso adiciona um pequeno respiro ao redor dos elementos */
-}
-
-.header_page, .container, .footer_page {
-    display: flex;
-    flex-direction: column;
+      
+  .header_page{
+    background-color: #00F43b;
     align-items: center;
-    justify-content: center;
-}
+    padding: 1rem 0;
+  }
 
-.header_page {
-padding: 0.5rem 1rem;
-display: flex;
-justify-content: space-around;
-}
-.header_page img{
-  margin-right: -2rem;
-}
-.container {
-  margin-top: 3rem;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
- 
-}
-.section_container, 
-.section_container_result{
-  width:100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 1rem;
-}
-#result_title,
-#result_mens{
-  font-size: 1.2rem;
-}
-.section_container_result_output{
-  max-height: 50%;
-}
 
-.section_container_result img{
-  width: 80%;
-}
 }
