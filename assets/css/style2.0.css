@@ -212,74 +212,63 @@ box-shadow: 0px 4px 8px 0px var(--quaternary-color);
     color:var(--tertiary-color);
 }
 
-/* Configurações de responsividade para telas menores*/
+
+/* Configurações de responsividade para telas menores */ 
 @media only screen and (max-width: 992px) {
-  .page_wrapper{
-    background-size: 100%;
-  }
+
   body {
-     height: auto;
-     gap: 1.5rem;
-  }
-  .header_page {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 20px; /* Isso adiciona um pequeno espaço entre os elementos */
+    align-items: center; /* Isso centraliza os elementos verticalmente */
+    justify-content: center; /* Isso centraliza os elementos horizontalmente */
+    height: 100vh; /* Isso faz com que o body ocupe toda a altura da tela */
+    margin: 0;
+    padding: 20px; /* Isso adiciona um pequeno respiro ao redor dos elementos */
+}
+
+.header_page, .container, .footer_page {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
-  }
-  .header_page nav ul {
-    display: flex;
     justify-content: center;
-    width: 100%;
-}
-.header_page nav ul li a{
-  font-size: 1.3em;
-  font-weight: 400;
-  text-decoration: none;
-  border-radius: 0.5rem;
-  transition: all 1s ease-in-out;
-}
-.header_page nav ul li a:hover{
-  background-color: var(--tertiary-color);
-  color: var(--secondary-color);
-  border: 2px solid var(--tertiary-color);
-  transform: scale(1.1);
-  transform: translateY(-5px);
 }
 
-  .container {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      flex-wrap: wrap;
-  }
-  .section_container {
-    width: 90%;
-  }
+.header_page {
+padding: 0.5rem 1rem;
+display: flex;
+justify-content: space-around;
+}
+.header_page img{
+  margin-right: -2rem;
+}
+.container {
+  margin-top: 3rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+ 
+}
+.section_container, 
+.section_container_result{
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+}
+#result_title,
+#result_mens{
+  font-size: 1.2rem;
+}
+.section_container_result_output{
+  max-height: 50%;
+}
 
-  .section_container_result {
-    width: 90%;
-     
-  }
-
-  .section_container_buttons {
-      flex-direction: column;
-  }
-  
-  .section_container_result_card {
-      width: 100%;
-  }
-
-  .footer_page {
-    width: 100%;
-    height: max-content;
-    padding: 1rem;
-    color: var(--main-color);
-    background-color: var(--black);
-    text-align: center;
-    font-family: var(--secondary-font);
-    font-size: 1rem;
-    font-weight: 400;
-  }
-
+.section_container_result img{
+  width: 80%;
+}
 }
