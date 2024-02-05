@@ -38,10 +38,12 @@ body {
 }
 /* Configurações gerais do header da página*/
 .header_page {
-  display: flex;
-  align-items: center;
-  padding: 0.5rem;
-  justify-content: space-between;
+  background-color: black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1.2rem;
+    flex-wrap: wrap;
 }
 /* Configurações gerais do logo da header*/
 .header_page img {
