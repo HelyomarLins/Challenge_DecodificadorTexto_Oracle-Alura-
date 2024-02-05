@@ -215,7 +215,7 @@ box-shadow: 0px 4px 8px 0px var(--quaternary-color);
 
 /* Configurações de responsividade para telas menores */ 
 @media only screen and (max-width: 992px) {
-<<<<<<< Updated upstream
+
 
   body {
     display: grid;
@@ -231,16 +231,15 @@ box-shadow: 0px 4px 8px 0px var(--quaternary-color);
 .header_page, .container, .footer_page {
     display: flex;
     flex-direction: column;
-=======
-      
+
+}  
   .header_page{
     
->>>>>>> Stashed changes
+
     align-items: center;
     justify-content: center;
 }
 
-<<<<<<< Updated upstream
 .header_page {
 padding: 0.5rem 1rem;
 display: flex;
@@ -274,7 +273,7 @@ justify-content: space-around;
 .section_container_result_output{
   max-height: 50%;
 }
-=======
+
   .container{
    
     padding: 0.5rem;
@@ -310,8 +309,6 @@ justify-content: space-around;
     text-align: center;
    
   }
-
->>>>>>> Stashed changes
 
 .section_container_result img{
   width: 80%;
