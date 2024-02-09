@@ -37,19 +37,28 @@ function decodeText(text) {
     });
     return text;
 }
-
 // Função para validar o texto
-function validateText () {
-    return elements.encryptedText.match(/^[a-z\s]+$/i);
+function validateText() {
+    const isValid = /^[a-z\s]+$/i.test(elements.encryptedText);
+    console.log('Texto válido:', isValid);
+    return isValid;
 }
+
 
 // Função para exibir uma mensagem de entrada inválida
-function invalidEntry () {
-    elements.alertMessage.style.color = 'red';
-    setTimeout( () => {
-        elements.alertMessage.style.color = '#495057';
-    }, 500);
+function invalidEntry() {
+    elements.alertMessage.style.display = 'block'; // Exibe a mensagem de erro
+    elements.alertMessage.style.color = 'red'; // Define a cor do texto como vermelho
+    elements.inputTextArea.focus();
+
+    setTimeout(() => {
+        elements.alertMessage.style.display = 'none'; // Oculta a mensagem de erro após 1500 milissegundos
+        elements.alertMessage.style.color = '#495057'; // Restaura a cor original do texto
+        elements.inputTextArea.value = ''; // Limpa o conteúdo da inputTextArea
+    }, 1500);
 }
+
+
 
 // Função para exibir o resultado vazio
 function showResultEmpty() {
@@ -65,9 +74,17 @@ function showResultCard (value) {
 }
 
 // Evento de clique para copiar o texto
+// Evento de clique para copiar o texto
 elements.copyButton.onclick = () => {
-    navigator.clipboard.writeText(elements.encryptedText);
+    navigator.clipboard.writeText(elements.encryptedText).then(() => {
+        elements.inputTextArea.value = elements.encryptedText; // Define o valor da inputTextArea como o texto copiado
+        elements.inputTextArea.focus(); // Define o foco na inputTextArea
+    }).catch(error => {
+        console.error('Erro ao copiar texto: ', error);
+    });
 };
+
+
 
 // Evento de clique para codificar o texto
 elements.encodeButton.onclick = () => {

@@ -142,13 +142,11 @@ input[type="button"] {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-}
-
-/* Configurações do parágrafo do alerta da seção principal*/  
-.section-main-alert p {
-    font-size: 0.75rem;
+  font-size: 1.5rem;
   line-height: 1rem;
-  color: var(--text-color);
+}
+.section-main img{
+  
 }
 
 /* Configurações da seção de resultados*/  
