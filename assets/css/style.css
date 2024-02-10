@@ -60,13 +60,9 @@ input[type="button"] {
   margin-top: 1rem;
   width: 5rem;
   padding-inline-start: 2rem;
-  background-color: aqua;
-  border-radius: 40%;
-  
-
 }
 .main-container,
-.pageheader {
+.page-header {
     padding: 2.5rem;
 }
 
@@ -77,11 +73,6 @@ input[type="button"] {
     flex-wrap: wrap;
     justify-content: center;
     margin-left: 4rem;
-}
-
-/* Configurações da imagem do cabeçalho*/  
-.page-header img {
-    width: 10rem;
 }
 
 /* Configurações do container principal*/  
