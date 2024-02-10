@@ -74,14 +74,14 @@ input[type="button"] {
 .page-header {
     grid-area: header;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
     margin-left: 4rem;
 }
 
 /* Configurações da imagem do cabeçalho*/  
 .page-header img {
-    width: 2rem;
+    width: 10rem;
 }
 
 /* Configurações do container principal*/  
@@ -145,9 +145,6 @@ input[type="button"] {
   font-size: 1.5rem;
   line-height: 1rem;
 }
-.section-main img{
-  
-}
 
 /* Configurações da seção de resultados*/  
 .section-result-start,
@@ -199,22 +196,24 @@ input[type="button"] {
     grid-template-rows: max-content auto max-content;
     grid-template-columns: auto;
 }
-
   .page-header {
     align-items: flex-start;
     padding: 1rem 0.5rem 0 1rem;
     margin-left: 0;
   }
-
   .main-container {
     flex-direction: column;
     padding: 1rem;
     gap: 2rem;
   }
   .section-main {
-    gap: 1rem;
+    gap: 2rem;
   }
-
+    .section-main-alert{
+      margin: 0 auto;
+      align-items: center;
+      font-size: 1.2rem;
+    }
   .section-main textarea {
     margin-top: 2.5rem;
     min-height: 15rem;

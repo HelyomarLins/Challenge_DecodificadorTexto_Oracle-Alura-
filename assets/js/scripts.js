@@ -35,30 +35,35 @@ function decodeText(text) {
     Object.keys(reverseWords).forEach((k) => {
       text = text.split(k).join(reverseWords[k]);
     });
+    elements.inputTextArea.focus();
     return text;
 }
 // Função para validar o texto
 function validateText() {
-    const isValid = /^[a-z\s]+$/i.test(elements.encryptedText);
+    const isValid = /^[a-z\s]+$/.test(elements.encryptedText);
+    console.log('Entrada:', elements.encryptedText);
     console.log('Texto válido:', isValid);
     return isValid;
 }
 
-
 // Função para exibir uma mensagem de entrada inválida
 function invalidEntry() {
-    elements.alertMessage.style.display = 'block'; // Exibe a mensagem de erro
-    elements.alertMessage.style.color = 'red'; // Define a cor do texto como vermelho
+    // Exibe a mensagem de erro
+    elements.alertMessage.style.display = 'block';
+    // Define a cor do texto como vermelho
+    elements.alertMessage.style.color = 'red';
+    //Retorna cursor para textArea
     elements.inputTextArea.focus();
 
+    // Oculta a mensagem de erro após 1500 milissegundos
     setTimeout(() => {
-        elements.alertMessage.style.display = 'none'; // Oculta a mensagem de erro após 1500 milissegundos
-        elements.alertMessage.style.color = '#495057'; // Restaura a cor original do texto
-        elements.inputTextArea.value = ''; // Limpa o conteúdo da inputTextArea
-    }, 1500);
+        elements.alertMessage.style.display = 'none';
+        // Restaura a cor original do texto
+        elements.alertMessage.style.color = '#495057';
+        // Limpa o conteúdo da inputTextArea
+        elements.inputTextArea.value = ''; 
+        }, 1500);
 }
-
-
 
 // Função para exibir o resultado vazio
 function showResultEmpty() {
@@ -72,8 +77,6 @@ function showResultCard (value) {
     elements.startResultContainer.style.display = 'none';
     elements.resultContainer.style.display = 'flex';
 }
-
-// Evento de clique para copiar o texto
 // Evento de clique para copiar o texto
 elements.copyButton.onclick = () => {
     navigator.clipboard.writeText(elements.encryptedText).then(() => {
@@ -83,9 +86,6 @@ elements.copyButton.onclick = () => {
         console.error('Erro ao copiar texto: ', error);
     });
 };
-
-
-
 // Evento de clique para codificar o texto
 elements.encodeButton.onclick = () => {
     elements.encryptedText = elements.inputTextArea.value;
@@ -109,4 +109,5 @@ elements.decodeButton.onclick = () => {
     elements.encryptedText = decodeText(elements.encryptedText);
     elements.inputTextArea.value = '';
     showResultCard(elements.encryptedText);
+    elements.inputTextArea.focus();
 };
